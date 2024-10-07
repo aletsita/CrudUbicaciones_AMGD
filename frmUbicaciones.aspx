@@ -36,8 +36,8 @@
                     <!-- Controles de altas, cambios y bajas -->
                     <div class="form-group">
                         <asp:Button ID="btnAgregar" CssClass="btn btn-success" runat="server" Text="Agregar" UseSubmitBehavior="false" OnClick="AgregarRegistro"/>
-                        <asp:Button ID="btModificar" CssClass="btn btn-warning" runat="server" Text="Modificar" UseSubmitBehavior="false" Enabled="false"/>
-                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" UseSubmitBehavior="false" Enabled="false"/>
+                        <asp:Button ID="btModificar" CssClass="btn btn-warning" runat="server" Text="Modificar" UseSubmitBehavior="false" Enabled="True" OnClick="btModificar_Click"/>
+                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" runat="server" Text="Eliminar" UseSubmitBehavior="false" Enabled="True" OnClick="btnEliminar_Click"/>
                         <asp:Button ID="btnLimpiar" CssClass="btn btn-default" runat="server" Text="Limpiar" UseSubmitBehavior="false"/>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <h1>Ubicaciones</h1>
                 <div class="col-md-8">
 
-                    <asp:GridView ID="gvUbicaciones" runat="server" CssClass="table-responsive table table-bordered">
+                    <asp:GridView ID="gvUbicaciones" runat="server" CssClass="table-responsive table table-bordered" OnRowCommand="gvUbicaciones_RowCommand">
                         <Columns>
                             <asp:ButtonField CommandName="btnSeleccionar" Text="Seleccionar">
                             <ControlStyle CssClass="btn btn-info" />

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -46,6 +45,8 @@ namespace CrudUbicaciones_AMGD
 
         }
 
+
+
         protected void AgregarRegistro(object sender, EventArgs e)
         {
             oUbicacionesDAL = new ubicacionesDAL();
@@ -53,6 +54,38 @@ namespace CrudUbicaciones_AMGD
             ListarUbicaciones();
         }
 
-       
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            oUbicacionesDAL = new ubicacionesDAL();
+            oUbicacionesDAL.Eliminar (datosUbicacion());
+            ListarUbicaciones();
+
+        }
+
+        protected void btModificar_Click(object sender, EventArgs e)
+        {
+            oUbicacionesDAL = new ubicacionesDAL ();
+            oUbicacionesDAL.Modificar(datosUbicacion());
+            ListarUbicaciones ();
+        }
+
+        protected void gvUbicaciones_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "btnSeleccionar")
+            {
+                int indice = Convert.ToInt32(e.CommandArgument);
+                GridViewRow filaSeleccion = gvUbicaciones.Rows[indice];
+
+                string idUbicacion = filaSeleccion.Cells[1].Text;
+                string ubicacion = filaSeleccion.Cells[2].Text;
+                string latitud = filaSeleccion.Cells[3].Text;
+                string longitud = filaSeleccion.Cells[4].Text;
+
+                txtID.Value = idUbicacion;
+                txtUbicacion.Text = ubicacion;
+                txtLat.Text = latitud;
+                txtLong.Text = longitud;
+            }
+        }
     }
 }
